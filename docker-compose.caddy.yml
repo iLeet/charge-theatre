@@ -1,0 +1,21 @@
+# HTTPS with your own domain. Put these in .env, then just run:  docker compose up -d --build
+#   DOMAIN=theatre.yourdomain.com
+#   COMPOSE_FILE=docker-compose.yml:docker-compose.caddy.yml     (use ; instead of : on Windows)
+services:
+  charge-theater:
+    ports: !reset []
+    environment:
+      TRUST_PROXY: "1"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      DOMAIN: "${DOMAIN:?Set DOMAIN in .env}"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+volumes:
+  caddy_data:

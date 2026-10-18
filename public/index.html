@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0c0f">
+<meta name="color-scheme" content="dark">
+<title>Charge Theatre</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app"></div>
+
+<div id="player" class="player" hidden>
+  <video id="video" playsinline preload="auto"></video>
+
+  <div class="p-spinner" id="spinner" hidden><div class="ring"></div><div class="msg" id="spinMsg"></div></div>
+
+  <div class="p-ui" id="ui">
+    <div class="p-top">
+      <button class="pbtn pill" id="pBack" data-i="back"><span>Back</span></button>
+      <div class="p-title"><div class="p-show" id="pShow"></div><div class="p-ep" id="pEp"></div></div>
+      <div class="p-badge" id="pBadge"></div>
+    </div>
+
+    <div class="p-mid">
+      <button class="pbtn round" id="pRew" data-i="rew" aria-label="Back 10 seconds"></button>
+      <button class="pbtn round xl" id="pPlay" data-i="play" aria-label="Play / pause"></button>
+      <button class="pbtn round" id="pFwd" data-i="fwd" aria-label="Forward 10 seconds"></button>
+    </div>
+
+    <div class="p-bottom">
+      <div class="p-seek" id="seek" role="slider" aria-label="Seek">
+        <div class="track"><div class="buf" id="seekBuf"></div><div class="played" id="seekPlayed"></div></div>
+        <div class="knob" id="seekKnob"></div>
+        <div class="tip" id="seekTip" hidden></div>
+      </div>
+      <div class="p-row">
+        <span class="time" id="pTime">0:00 / 0:00</span>
+        <span class="spacer"></span>
+        <button class="pbtn" id="pPrev" data-i="prev" aria-label="Previous episode"></button>
+        <button class="pbtn" id="pNext" data-i="next" aria-label="Next episode"></button>
+        <button class="pbtn" id="pSubs" data-i="cc" aria-label="Subtitles"></button>
+        <button class="pbtn" id="pAudio" data-i="audio" aria-label="Audio track"></button>
+        <button class="pbtn pill" id="pQuality" data-i="gear"><span>Quality</span></button>
+        <button class="pbtn pill" id="pSpeed"><span>1×</span></button>
+        <button class="pbtn" id="pFull" data-i="full" aria-label="Fullscreen"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-menu" id="menu" hidden></div>
+
+  <div class="p-next" id="upnext" hidden>
+    <div class="lbl">Up next in <span id="upCount">10</span>s</div>
+    <div class="nm" id="upName"></div>
+    <div class="btns"><button class="btn primary" id="upPlay">Play now</button><button class="btn" id="upCancel">Cancel</button></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="/vendor/hls.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

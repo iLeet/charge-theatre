@@ -1,0 +1,14 @@
+{
+  "name": "charge-theater",
+  "version": "1.0.0",
+  "description": "A tiny self-hosted video site built for watching your own library from a parked car's browser.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

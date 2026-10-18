@@ -1,0 +1,6 @@
+# Caddy gets and renews the HTTPS certificate for you. Set DOMAIN in .env.
+{$DOMAIN} {
+	reverse_proxy charge-theater:8080 {
+		flush_interval -1
+	}
+}

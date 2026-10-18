@@ -1,0 +1,19 @@
+services:
+  charge-theater:
+    build: .
+    container_name: charge-theater
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      PASSWORD: "${PASSWORD:-}"
+      SITE_NAME: "${SITE_NAME:-Charge Theatre}"
+      TRUST_PROXY: "${TRUST_PROXY:-0}"
+      MAX_TRANSCODES: "${MAX_TRANSCODES:-2}"
+      X264_PRESET: "${X264_PRESET:-veryfast}"
+      ENCODER: "${ENCODER:-libx264}"
+      SESSION_DAYS: "${SESSION_DAYS:-90}"
+    volumes:
+      # Left side = the folder on your server that holds your shows. Mounted read-only.
+      - "${MEDIA_PATH:-./media}:/media:ro"
+      - "${DATA_PATH:-./data}:/data"
